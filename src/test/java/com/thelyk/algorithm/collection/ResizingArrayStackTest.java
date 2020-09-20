@@ -16,7 +16,6 @@ class ResizingArrayStackTest {
 		assertThrows(EmptyStackException.class, stack::pop);
 		Iterator<String> iterator = stack.iterator();
 		assertThrows(NoSuchElementException.class, iterator::next);
-		assertThrows(UnsupportedOperationException.class, iterator::remove);
 		assertTrue(stack.isEmpty());
 		assertEquals(0, stack.size());
 		stack.push("something");
