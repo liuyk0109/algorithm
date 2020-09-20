@@ -52,15 +52,10 @@ public class ResizingArrayStack<T> implements Iterable<T> {
 
 		@Override
 		public T next() {
-			if (i == 0) {
+			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
 			return a[--i];
-		}
-
-		@Override
-		public void remove() {
-			throw new UnsupportedOperationException();
 		}
 	}
 }
