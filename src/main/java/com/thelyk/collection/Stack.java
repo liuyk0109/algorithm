@@ -1,5 +1,6 @@
 package com.thelyk.collection;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -34,6 +35,9 @@ public class Stack<T> implements Iterable<T> {
 	}
 
 	public T pop() {
+		if (first == null) {
+			throw new EmptyStackException();
+		}
 		T item = first.item;
 		first = first.next;
 		size--;

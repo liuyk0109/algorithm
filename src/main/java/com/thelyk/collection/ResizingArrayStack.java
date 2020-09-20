@@ -1,6 +1,7 @@
 package com.thelyk.collection;
 
 import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -29,6 +30,9 @@ public class ResizingArrayStack<T> implements Iterable<T> {
 	}
 
 	public T pop() {
+		if (size == 0) {
+			throw new EmptyStackException();
+		}
 		T item = a[--size];
 		a[size] = null;
 		if (size > 0 && size == a.length / 4) {

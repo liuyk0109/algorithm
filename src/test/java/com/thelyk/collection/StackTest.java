@@ -2,6 +2,7 @@ package com.thelyk.collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -12,6 +13,7 @@ class StackTest {
 	@Test
 	void testAll() {
 		Stack<String> stack = new Stack<>();
+		assertThrows(EmptyStackException.class, stack::pop);
 		Iterator<String> iterator = stack.iterator();
 		assertThrows(NoSuchElementException.class, iterator::next);
 		assertThrows(UnsupportedOperationException.class, iterator::remove);

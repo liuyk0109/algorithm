@@ -2,6 +2,7 @@ package com.thelyk.collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -12,6 +13,7 @@ class ResizingArrayStackTest {
 	@Test
 	void testAll() {
 		ResizingArrayStack<String> stack = new ResizingArrayStack<>();
+		assertThrows(EmptyStackException.class, stack::pop);
 		Iterator<String> iterator = stack.iterator();
 		assertThrows(NoSuchElementException.class, iterator::next);
 		assertThrows(UnsupportedOperationException.class, iterator::remove);
