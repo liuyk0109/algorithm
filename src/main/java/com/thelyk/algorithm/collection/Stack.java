@@ -1,4 +1,4 @@
-package com.thelyk.collection;
+package com.thelyk.algorithm.collection;
 
 import java.util.EmptyStackException;
 import java.util.Iterator;

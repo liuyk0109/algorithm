@@ -1,4 +1,4 @@
-package com.thelyk.collection;
+package com.thelyk.algorithm.collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,11 +8,11 @@ import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
-class StackTest {
+class ResizingArrayStackTest {
 
 	@Test
 	void testAll() {
-		Stack<String> stack = new Stack<>();
+		ResizingArrayStack<String> stack = new ResizingArrayStack<>();
 		assertThrows(EmptyStackException.class, stack::pop);
 		Iterator<String> iterator = stack.iterator();
 		assertThrows(NoSuchElementException.class, iterator::next);
