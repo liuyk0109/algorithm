@@ -7,59 +7,59 @@ import java.util.NoSuchElementException;
 
 public class ResizingArrayStack<T> implements Iterable<T> {
 
-	private T[] a = (T[]) new Object[1];
-	private int size = 0;
+    private T[] a = (T[]) new Object[1];
+    private int size = 0;
 
-	public boolean isEmpty() {
-		return size == 0;
-	}
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
-	public int size() {
-		return size;
-	}
+    public int size() {
+        return size;
+    }
 
-	private void resize(int max) {
-		a = Arrays.copyOf(a, max);
-	}
+    private void resize(int max) {
+        a = Arrays.copyOf(a, max);
+    }
 
-	public void push(T item) {
-		if (size == a.length) {
-			resize(2 * a.length);
-		}
-		a[size++] = item;
-	}
+    public void push(T item) {
+        if (size == a.length) {
+            resize(2 * a.length);
+        }
+        a[size++] = item;
+    }
 
-	public T pop() {
-		if (size == 0) {
-			throw new EmptyStackException();
-		}
-		T item = a[--size];
-		a[size] = null;
-		if (size > 0 && size == a.length / 4) {
-			resize(a.length / 2);
-		}
-		return item;
-	}
+    public T pop() {
+        if (size == 0) {
+            throw new EmptyStackException();
+        }
+        T item = a[--size];
+        a[size] = null;
+        if (size > 0 && size == a.length / 4) {
+            resize(a.length / 2);
+        }
+        return item;
+    }
 
-	@Override
-	public Iterator<T> iterator() {
-		return new ReverseArrayIterator();
-	}
+    @Override
+    public Iterator<T> iterator() {
+        return new ReverseArrayIterator();
+    }
 
-	private class ReverseArrayIterator implements Iterator<T> {
-		private int i = size;
+    private class ReverseArrayIterator implements Iterator<T> {
+        private int i = size;
 
-		@Override
-		public boolean hasNext() {
-			return i > 0;
-		}
+        @Override
+        public boolean hasNext() {
+            return i > 0;
+        }
 
-		@Override
-		public T next() {
-			if (!hasNext()) {
-				throw new NoSuchElementException();
-			}
-			return a[--i];
-		}
-	}
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return a[--i];
+        }
+    }
 }
