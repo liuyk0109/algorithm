@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 
 public class ResizingArrayStack<T> implements Iterable<T> {
 
+    @SuppressWarnings("unchecked")
     private T[] a = (T[]) new Object[1];
     private int size = 0;
 

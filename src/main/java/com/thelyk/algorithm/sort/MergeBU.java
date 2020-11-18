@@ -2,9 +2,10 @@ package com.thelyk.algorithm.sort;
 
 public class MergeBU {
 
-    public static void sort(Comparable[] a) {
+    public static <T extends Comparable<T>> void sort(T[] a) {
         int n = a.length;
-        Comparable[] aux = new Comparable[n];
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Comparable[n];
         for (int sz = 1; sz < n; sz = sz + sz) {
             for (int lo = 0; lo < n - sz; lo += sz + sz) {
                 merge(a, aux, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, n - 1));
@@ -12,7 +13,7 @@ public class MergeBU {
         }
     }
 
-    private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+    private static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
         int i = lo;
         int j = mid + 1;
 

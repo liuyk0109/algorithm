@@ -2,12 +2,13 @@ package com.thelyk.algorithm.sort;
 
 public class Merge {
 
-    public static void sort(Comparable[] a) {
-        Comparable[] aux = new Comparable[a.length];
+    public static <T extends Comparable<T>> void sort(T[] a) {
+        @SuppressWarnings("unchecked")
+        T[] aux = (T[]) new Comparable[a.length];
         sort(a, aux, 0, a.length - 1);
     }
 
-    private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
+    private static <T extends Comparable<T>> void sort(T[] a, T[] aux, int lo, int hi) {
         if (hi <= lo) {
             return;
         }
@@ -17,7 +18,7 @@ public class Merge {
         merge(a, aux, lo, mid, hi);
     }
 
-    private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi) {
+    private static <T extends Comparable<T>> void merge(T[] a, T[] aux, int lo, int mid, int hi) {
         int i = lo;
         int j = mid + 1;
 
